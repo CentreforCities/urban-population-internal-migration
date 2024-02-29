@@ -38,11 +38,11 @@ pop_2022 <- temporary_df[,c(1,3)]
 
 
 #Get geo data 
-path = paste0(dirname("~"),"\\Centre for Cities\\Centre For Cities POC - Documents\\Research", collapse = NULL)
+path = paste0(dirname("~"),"/Centre for Cities/Centre For Cities POC - Documents/Research/Social and Demographics/Escape to the Country/Data/Input", collapse = NULL)
 setwd(path)
 
-geography <- read_xlsx("Cities Outlook\\Cities Outlook 2024\\geo_lookupML.xlsx")
-
+#import the geography lookup:
+geography <- read_xlsx("LAtoPUA2024.xlsx")
 
 #Clean up geography datageography <- geography[,1:6] # Select only needed columns for geography lookup
 geography <- geography %>%
