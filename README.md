@@ -11,7 +11,7 @@ The briefing uses data published by the Office for National Statistics on total 
 R, Windows 10 or 11, Microsoft Excel
 
 ### Data sources
-All data is gathered from the Office for National Statistics
+All data is gathered from the Office for National Statistics. All below links are functional at the time of writing but may be updated by the ONS as they release new data. 
 
 Population Estimates for England and Wales: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales
 
