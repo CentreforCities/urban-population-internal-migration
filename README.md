@@ -6,11 +6,13 @@ This repo contains the scripts and workbooks used to analyse data for our March 
 
 The briefing uses data published by the Office for National Statistics on total population; internal migration; births and deaths; and average private rents. See links to the data sources below. 
 
+We also use a number of our own Lookups and pre-R edited workbooks. These are uploaded to the repo and explained in more detail below. 
+
 ## Getting Started
 ### Dependencies
 R, Windows 10 or 11, Microsoft Excel
 
-### Data sources
+### External data sources
 All data is gathered from the Office for National Statistics. All below links are functional at the time of writing but may be updated by the ONS as they release new data. 
 
 Population Estimates for England and Wales: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales
@@ -31,15 +33,7 @@ Price Index of Private Rents:
 https://www.ons.gov.uk/peoplepopulationandcommunity/housing/articles/redevelopmentofprivaterentalpricesstatisticsimpactanalysisuk/latest#local-authority-data
 
 ## Understanding the Data
-For the annual update, the price paid data includes two updates - the complete price data for the year previous, and the provisional data for the year current
-
-There are three datasets to download - the provisional price paid data for the current year; and the complete price paid data for the previous year; and the updated postcode registry. For the postcode registry, see the postcode repo.
-
-The postcodes need to be merged with their lookups, and these new lookups then need be merged with each land registry data set for price paid data to identify prices by PUA, for both years.
-
-If the boundaries of PUAs have changed, then the lookups also need to be changed before merging with the postcodes, and the prices for all previous years for those cities need to be changed
-
-Download the previous complete data and the provisional current year price paid data as a csv here: https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads
+Data on private rents is from the Price Index of Private Rents link above. We have added a London lookup and filtered out London in Excel. The data is then processed using the R script XXXX. 
 
 ## Understanding the Scripts
 There are currently two scripts in this folder
