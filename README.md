@@ -23,7 +23,7 @@ https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/liv
 Death registrations by local authority and health board: 
 https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/datasets/deathregistrationsandoccurrencesbylocalauthorityandhealthboard 
 
-Birth data popularity(ONS analysis): 
+Birth data popularity (ONS analysis): 
 https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/articles/howpopularisyourbirthday/2015-12-18 
 
 Price Index of Private Rents: 
