@@ -1,16 +1,16 @@
 # urban-population-internal-migration
 Data handling and analysis for the Centre for Cities 'Escape to the Country?' briefing
 
-### Description
+## Description
 This repo contains the scripts and workbooks used to analyse data for our March 2024 release 'Escape to the Country?'. This briefing looks at the impact of the Covid-19 pandemic on urban population growth in the UK, with a specific focus on London. 
 
 The briefing uses data published by the Office for National Statistics on total population; internal migration; births and deaths; and average private rents. See links to the data sources below. 
 
-### Getting Started
-# Dependencies
+## Getting Started
+### Dependencies
 R, Windows 10 or 11, Microsoft Excel
 
-# Data sources
+### Data sources
 All data is gathered from the Office for National Statistics
 Population Estimates for England and Wales: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales
 
@@ -49,7 +49,7 @@ Loop Merge - Runs a loop in Stata which appends all of the results for every yea
 
 Before doing any work on any script, make sure that the Postcode lookup is updated using the script in the Postcode repo.
 
-# Price Paid Script
+### Price Paid Script
 This script will need to be updated every year to account for cleaning - it is common that the price paid data contains errors (e.g. terraced houses in Sheffield worth a billion pounds).
 
 At the end, there are distinct outputs for both PUAs and CAs. These are combined together into the final data for both complete and provisional data in the workboook.
@@ -58,31 +58,31 @@ Likewise, there is also a separate 'ending' for monthly transactions, which is r
 
 Currently in Excel, the final step is for each year, count the number of transactions by PUA; and sum the value of all the transactions. Divide the value of all transactions by the number of transactions to acquire the mean price for PUA. This could in a later update of the script all be done in Stata.
 
-# Loop Merge
+### Loop Merge
 This is only for use when the boundaries of a city or a combined authority change and there is a need to correct historic city data.
 
 For this data, download each year's CSVs back to 2001 directly into your repo's folder alongside the script. The script should automatically pick out every csv in the folder and append them into a single .dta file, with which you can work to calculate historic PUA/CA data.
 
 Delete all the annual csvs and the .dta file once you have finished, to avoid clogging up your folders and the repo.
 
-### Caveats
+## Caveats
 This is price paid data, not advertised price or true market prices at any given time.
 
 Errors do sometimes slip into the raw data and must be checked for and removed in any running of the script. Sorting and looking for unusually expensive properties is typical.
 
-### Usage
+## Usage
 The complete and provisional price paid data is important for calculating the average price of dwellings in cities, as well as the affordability ratio, for use in Cities Outlook, City Monitor, the Data Tool, and other uses. The monthly transactions data is used only in City Monitor.
 
 In future, we could merge this data with the Energy Performance Certificates to produce estimates on prices per square metre within cities, including for different types of housing or different parts of cities.
 
-### Roadmap
+## Roadmap
 Run the Loop Merge script to generate prices for the new NEMCA and historic CAs
 Update the Price Paid Script to do as many of the calculations within Stata
 Separate out monthly transactions into a separate script
 Integrate with the EPC data to produce estimates on prices per square metre
 
-### Contributions
+## Contributions
 Any contributions you make are greatly appreciated. Please create an open issue with the tag "enhancement" before opening a pull request.
 
-### Acknowledgements
+## Acknowledgements
 Thanks to James Evans for writing the postcode script
