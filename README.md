@@ -33,7 +33,9 @@ Price Index of Private Rents:
 https://www.ons.gov.uk/peoplepopulationandcommunity/housing/articles/redevelopmentofprivaterentalpricesstatisticsimpactanalysisuk/latest#local-authority-data
 
 ## Understanding the Data
-Data on private rents is from the Price Index of Private Rents link above. We have added a London lookup and filtered out London in Excel. The data is then processed using the R script XXXX. 
+We use data downloaded directly from the ONS as inputs for our R scripts. To obtain this data, please follow the links above. Where we do not use raw ONS data in our R scripts, we have uploaded the Excel workbooks in the 'Input workbooks' folder. This includes geography lookups and workbooks where we have sorted data in Excel before analysis in R. For example, data on private rents is from the Price Index of Private Rents link above, but we have added a London lookup and filtered out London in Excel prior to analysis in the average_private_rents.R script. 
+
+
 
 ## Understanding the Scripts
 There are currently two scripts in this folder
