@@ -1,25 +1,33 @@
 # urban-population-internal-migration
-Data handling and analysis for Escape to the Country briefing
+Data handling and analysis for the Centre for Cities 'Escape to the Country?' briefing
 
 ### Description
+This repo contains the scripts and workbooks used to analyse data for our March 2024 release 'Escape to the Country?'. This briefing looks at the impact of the Covid-19 pandemic on urban population growth in the UK, with a specific focus on London. 
 
-
-
-House price data for all transactions in England and Wales is released monthly by the Land Registry at the postcode level. This data allows us to calculate both mean house prices for individual cities and combined authorities in England and Wales by year and in total from 2003 for Cities Outlook, the Data Tool, and City Monitor, monthly transactions which is used in City Monitor (and in future, prices by square metre).
-
-The most important use of this repo is the generation ofthe annual average price data in early January, both provisional and complete.
-
-English and Welsh data is downloaded here: https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads
-
-Scottish data is calculated in workbooks in the housing theme folder and uses this data: https://www.ros.gov.uk/data-and-statistics/house-price-statistics
-
-Belfast data is also available; Northern Irish data is not. See: https://www.finance-ni.gov.uk/articles/northern-ireland-house-price-index
+The briefing uses data published by the Office for National Statistics on total population; internal migration; births and deaths; and average private rents. See links to the data sources below. 
 
 ### Getting Started
-## Dependencies
-R, Windows 10, Microsoft Excel
+# Dependencies
+R, Windows 10 or 11, Microsoft Excel
 
-Price paid data: https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads
+# Data sources
+All data is gathered from the Office for National Statistics
+Population Estimates for England and Wales: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales
+
+Internal Migration between local authorities in England and Wales: 
+https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/internalmigrationinenglandandwales
+
+Births in England and Wales:
+https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/datasets/birthsummarytables
+
+Death registrations by local authority and health board: 
+https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/datasets/deathregistrationsandoccurrencesbylocalauthorityandhealthboard 
+
+Birth data popularity(ONS analysis): 
+https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/articles/howpopularisyourbirthday/2015-12-18 
+
+Price Index of Private Rents: 
+https://www.ons.gov.uk/peoplepopulationandcommunity/housing/articles/redevelopmentofprivaterentalpricesstatisticsimpactanalysisuk/latest#local-authority-data
 
 ## Understanding the Data
 For the annual update, the price paid data includes two updates - the complete price data for the year previous, and the provisional data for the year current
