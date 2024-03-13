@@ -1,8 +1,8 @@
 # urban-population-internal-migration
-Data handling and analysis for the Centre for Cities 'Escape to the Country?' briefing
+Data handling and analysis for the Centre for Cities 'Escape to the country? How Covid changed London's population' briefing
 
 ## Description
-This repo contains the scripts and workbooks used to analyse data for our March 2024 release 'Escape to the Country?'. This briefing looks at the impact of the Covid-19 pandemic on urban population growth in the UK, with a specific focus on London. 
+This repo contains the scripts and workbooks used to analyse data for our March 2024 release 'Escape to the country? How Covid changed London's population'. This briefing looks at the impact of the Covid-19 pandemic on urban population growth in the UK, with a specific focus on London. 
 
 The briefing uses data published by the Office for National Statistics on total population; internal migration; births and deaths; and average private rents. See links to the data sources below. 
 
@@ -65,7 +65,7 @@ There are currently six scripts in this folder. External (non-Centre for Cities)
 - adjust the script at the end to output to an appropriate folder 
 
 ### average_private_rents_script 
-Processes average private rent data (contained in Input workbooks folder); creates a column to index to January 2020 rents; creates filtered subsets of the data to compare annual rates of change between authorities; plots graph for selected authorities; outputs to the workbook that forms the basis of the 'average private rents data' workbook in the Output workbooks folder. 
+Processes average private rent data (contained in Input workbooks folder); creates a column to index to January 2020 rents and a further column to index to average UK rents; creates filtered subsets of the data to compare annual rates of change between authorities; plots graph for selected authorities; outputs to the workbook that forms the basis of the 'average private rents data' workbook in the Output workbooks folder. 
 
 ### births_deaths_natural_increase_script 
 Processes deaths and births data (contained in Input workbooks folder); attaches geographies from lookup; calculates natural increase; summarises births, deaths and natural increase by PUA and by Country. 
@@ -77,7 +77,7 @@ Processes raw data from ONS on internal migration estimates (see link above); at
 Processes raw data from ONS on internal migration estimates (see link above); attaches geographies from lookup; labels moves between different geographies (e.g. London and outside London; Inner London to outside London etc.); creates summary age bands; summarises moves by PUA and calculates net migration; repeats the process for each year; calculates 2015-2019 averages; puts relevant data into summary dataframes which are exported as separate tabs to an Excel workbook which forms the basis of the 'internal migration calculations' workbook. 
 
 ### internal_migration_script_localauthorities_for_stats
-Processes raw data from ONS on internal migration estimates (see link above); attaches geographies from lookup; lists authorities of interest; labels moves between different geographies (e.g. London and outside London; Inner London to outside London etc.); creates summary age bands; summarises moves by PUA and calculates net migration; repeats the process for each year; neatens data frames before exporting to workbook which forms the basis of the 'internal migration local authorities statistics' workbook. 
+Processes raw data from ONS on internal migration estimates (see link above); attaches geographies from lookup; lists authorities of interest; labels moves between different geographies (e.g. Tower Hamlets and outside London; London and Bristol etc.); creates summary age bands; summarises moves by selected authorities and calculates net migration; repeats the process for each year; neatens data frames before exporting to workbook which forms the basis of the 'internal migration local authorities statistics' workbook. 
 
 ### urban_population_script 
 Processes raw data from the Nomis API, attaches geographies from lookup, and summarises total population statistics by PUA and other geographies. Exports to Excel workbook that forms the basis of the 'urban population statistics' workbook. 
