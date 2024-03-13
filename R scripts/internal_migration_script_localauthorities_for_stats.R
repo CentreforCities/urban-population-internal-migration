@@ -50,7 +50,7 @@ colnames(geography)[2] <- "outla"
 selected_LA <- c("Kensington and Chelsea", "Westminster", "Hammersmith and Fulham", "Camden", "Richmond upon Thames", "Islington", "Southwark", "Lambeth",
                  "Greenwich", "Tower Hamlets", "Hackney", "Newham", "City of London", "Wandsworth", "Lewisham", "Haringey", "Croydon", "Hounslow",
                  "Watford", "Epping Forest", "Wiltshire", "Cornwall", "Bristol, City of", "Brighton and Hove", "Lewes", "Thanet",
-                 "Oxford", "South Oxfordshire", "Seven Oaks", "Winchester", "Barking and Dagenham" = "BND_nonLDF_move",
+                 "Oxford", "South Oxfordshire", "Seven Oaks", "Winchester", "Barking and Dagenham",
                  "Barnet" ,       "Bexley" ,   "Brent" ,     "Bromley" ,   "Ealing",   "Enfield" ,   "Harrow" ,   "Havering" ,"Hillingdon" ,
                  "Kingston upon Thames" , "Merton" , "Redbridge" , "Sutton" , "Waltham Forest" ,"Dartford" , "Gravesham","Elmbridge" ,"Epsom and Ewell" ,
                  "Runnymede" ,"Spelthorne" ,   "Woking" ,    "Broxbourne" ,  "Hertsmere" ,"Three Rivers")
