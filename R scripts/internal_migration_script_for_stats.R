@@ -107,6 +107,7 @@ for (i in seq_along(dfs)) {
                                            ifelse(inInOutLDN == "Inner London" & outInOutLDN == "Outer London", "Between Inner and Outer London",
                                                   ifelse(inInOutLDN == "Outer London" & outInOutLDN == "Inner London", "Between Inner and Outer London", "ignore"
                                                   ))))
+  
   ## Between London and Regions
   #create column labelling moves between London and South East
   raw_geog_inout <- raw_geog_inout %>%
@@ -115,37 +116,56 @@ for (i in seq_along(dfs)) {
                                                   ifelse(outRegion == "South East" & inPUA == "London", "South East to London", "ignore"))))
   #create column labelling moves between London and South West
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_SouthWest = ifelse(outPUA == "London" & inRegion == "South West", "London to South West",
-                                    ifelse(outRegion == "South West" & inPUA == "London", "South West to London", "ignore")))
+    mutate(London_SouthWest = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                     ifelse(outPUA == "London" & inRegion == "South West", "London to South West",
+                                    ifelse(outRegion == "South West" & inPUA == "London", "South West to London", "ignore"))))
   #create column labelling moves between London and East
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_East = ifelse(outPUA == "London" & inRegion == "East", "London to East",
-                                     ifelse(outRegion == "East" & inPUA == "London", "East to London", "ignore")))
+    mutate(London_East = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                ifelse(outPUA == "London" & inRegion == "East", "London to East",
+                                     ifelse(outRegion == "East" & inPUA == "London", "East to London", "ignore"))))
   #create column labelling moves between London and North East
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_NorthEast = ifelse(outPUA == "London" & inRegion == "North East", "London to North East",
-                                     ifelse(outRegion == "North East" & inPUA == "London", "North East to London", "ignore")))
+    mutate(London_NorthEast = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                     ifelse(outPUA == "London" & inRegion == "North East", "London to North East",
+                                     ifelse(outRegion == "North East" & inPUA == "London", "North East to London", "ignore"))))
   #create column labelling moves between London and North West
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_NorthWest = ifelse(outPUA == "London" & inRegion == "North West", "London to North West",
-                                     ifelse(outRegion == "North West" & inPUA == "London", "North West to London", "ignore")))
+    mutate(London_NorthWest = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                     ifelse(outPUA == "London" & inRegion == "North West", "London to North West",
+                                     ifelse(outRegion == "North West" & inPUA == "London", "North West to London", "ignore"))))
   #create column labelling moves between London and East Midlands
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_EastMidlands = ifelse(outPUA == "London" & inRegion == "East Midlands", "London to East Midlands",
-                                     ifelse(outRegion == "East Midlands" & inPUA == "London", "East Midlands to London", "ignore")))
+    mutate(London_EastMidlands = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                        ifelse(outPUA == "London" & inRegion == "East Midlands", "London to East Midlands",
+                                     ifelse(outRegion == "East Midlands" & inPUA == "London", "East Midlands to London", "ignore"))))
   #create column labelling moves between London and West Midlands
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_WestMidlands = ifelse(outPUA == "London" & inRegion == "West Midlands", "London to West Midlands",
-                                        ifelse(outRegion == "West Midlands" & inPUA == "London", "West Midlands to London", "ignore")))
+    mutate(London_WestMidlands = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                        ifelse(outPUA == "London" & inRegion == "West Midlands", "London to West Midlands",
+                                        ifelse(outRegion == "West Midlands" & inPUA == "London", "West Midlands to London", "ignore"))))
   #create column labelling moves between London and Yorkshire & Humber
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_YorkHum = ifelse(outPUA == "London" & inRegion == "Yorkshire & Humber", "London to Yorkshire & Humber",
-                                        ifelse(outRegion == "Yorkshire & Humber" & inPUA == "London", "Yorkshire & Humber to London", "ignore")))
+    mutate(London_YorkHum = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                   ifelse(outPUA == "London" & inRegion == "Yorkshire & Humber", "London to Yorkshire & Humber",
+                                        ifelse(outRegion == "Yorkshire & Humber" & inPUA == "London", "Yorkshire & Humber to London", "ignore"))))
   #create column labelling moves between London and Wales
   raw_geog_inout <- raw_geog_inout %>%
-    mutate(London_Wales = ifelse(outPUA == "London" & inRegion == "Wales", "London to Wales",
-                                     ifelse(outRegion == "Wales" & inPUA == "London", "Wales to London", "ignore")))
+    mutate(London_Wales = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                 ifelse(outPUA == "London" & inRegion == "Wales", "London to Wales",
+                                     ifelse(outRegion == "Wales" & inPUA == "London", "Wales to London", "ignore"))))
   
+  #create column labelling moves between London and GSE Urban
+  raw_geog_inout <- raw_geog_inout %>%
+    mutate(London_UrbanGSE = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                     ifelse(outPUA == "London" & inUrbanRegion == "Urban GSE", "London to Urban GSE",
+                                            ifelse(outUrbanRegion == "Urban GSE" & inPUA == "London", "Urban GSE to London", "ignore"))))
+  
+  #create column labelling moves between London and GSE Non_Urban
+  raw_geog_inout <- raw_geog_inout %>%
+    mutate(London_Non_UrbanGSE = ifelse(outPUA == inPUA & inPUA == "London", "ignore",
+                                     ifelse(outPUA == "London" & inUrbanRegion == "Non-Urban GSE", "London to Non_Urban GSE",
+                                            ifelse(outUrbanRegion == "Non-Urban GSE" & inPUA == "London", "Non_Urban GSE to London", "ignore"))))
   
   #add age band categories
   raw_geog_inout$Band_0_5 <- raw_geog_inout$Age_0 + raw_geog_inout$Age_1 + raw_geog_inout$Age_2 + raw_geog_inout$Age_3 + raw_geog_inout$Age_4 + raw_geog_inout$Age_5
@@ -464,6 +484,56 @@ for (i in seq_along(dfs)) {
   #name columns
   colnames(Wales_age_bands_out) <- c("PUA","Wales_0_5_out","Wales_18_19_out", "Wales_22_25_out", "Wales_30_35_out", "Wales_36_45_out", "Wales_56_65_out", "Wales_allages_out")
   
+  
+  ### London PUA to UrbanGSE analysis
+  sum_in_UrbanGSELDN <- raw_geog_inout %>%
+    filter(
+      London_UrbanGSE %in% c("London to Urban GSE", "Urban GSE to London")
+    ) %>%
+    group_by(inInOutLDN) %>%
+    summarize(across(starts_with(c("Age", "Band", "all")), sum))
+  UrbanGSE_age_bands_in <- sum_in_UrbanGSELDN %>%
+    select(1, (ncol(sum_in_UrbanGSELDN) - 6):ncol(sum_in_UrbanGSELDN))
+  #name columns
+  colnames(UrbanGSE_age_bands_in) <- c("PUA", "UrbanGSE_0_5_in","UrbanGSE_18_19_in", "UrbanGSE_22_25_in", "UrbanGSE_30_35_in", "UrbanGSE_36_45_in","UrbanGSE_56_65_in", "UrbanGSE_allages_in")
+  
+  sum_out_UrbanGSELDN <- raw_geog_inout %>%
+    filter(
+      London_UrbanGSE %in% c("London to Urban GSE", "Urban GSE to London")
+    ) %>%
+    group_by(outInOutLDN) %>%
+    summarize(across(starts_with(c("Age", "Band", "all")), sum))
+  #SElect bands only
+  UrbanGSE_age_bands_out <- sum_out_UrbanGSELDN %>%
+    select(1, (ncol(sum_out_UrbanGSELDN) - 6):ncol(sum_out_UrbanGSELDN))
+  #name columns
+  colnames(UrbanGSE_age_bands_out) <- c("PUA","UrbanGSE_0_5_out","UrbanGSE_18_19_out", "UrbanGSE_22_25_out", "UrbanGSE_30_35_out", "UrbanGSE_36_45_out", "UrbanGSE_56_65_out", "UrbanGSE_allages_out")
+  
+  ### London PUA to Non_UrbanGSE analysis
+  sum_in_Non_UrbanGSELDN <- raw_geog_inout %>%
+    filter(
+      London_Non_UrbanGSE %in% c("London to Non_Urban GSE", "Non_Urban GSE to London")
+    ) %>%
+    group_by(inInOutLDN) %>%
+    summarize(across(starts_with(c("Age", "Band", "all")), sum))
+  Non_UrbanGSE_age_bands_in <- sum_in_Non_UrbanGSELDN %>%
+    select(1, (ncol(sum_in_Non_UrbanGSELDN) - 6):ncol(sum_in_Non_UrbanGSELDN))
+  #name columns
+  colnames(Non_UrbanGSE_age_bands_in) <- c("PUA", "Non_UrbanGSE_0_5_in","Non_UrbanGSE_18_19_in", "Non_UrbanGSE_22_25_in", "Non_UrbanGSE_30_35_in", "Non_UrbanGSE_36_45_in","Non_UrbanGSE_56_65_in", "Non_UrbanGSE_allages_in")
+  
+  sum_out_Non_UrbanGSELDN <- raw_geog_inout %>%
+    filter(
+      London_Non_UrbanGSE %in% c("London to Non_Urban GSE", "Non_Urban GSE to London")
+    ) %>%
+    group_by(outInOutLDN) %>%
+    summarize(across(starts_with(c("Age", "Band", "all")), sum))
+  #SElect bands only
+  Non_UrbanGSE_age_bands_out <- sum_out_Non_UrbanGSELDN %>%
+    select(1, (ncol(sum_out_Non_UrbanGSELDN) - 6):ncol(sum_out_Non_UrbanGSELDN))
+  #name columns
+  colnames(Non_UrbanGSE_age_bands_out) <- c("PUA","Non_UrbanGSE_0_5_out","Non_UrbanGSE_18_19_out", "Non_UrbanGSE_22_25_out", "Non_UrbanGSE_30_35_out", "Non_UrbanGSE_36_45_out", "Non_UrbanGSE_56_65_out", "Non_UrbanGSE_allages_out")
+  
+  
   #join bands in and bands out
   age_bands_inout <- left_join(age_bands_in, age_bands_out, by = "PUA")
   Inner_age_bands_inout <- left_join(Inner_age_bands_in, Inner_age_bands_out, by = "PUA")
@@ -478,6 +548,8 @@ for (i in seq_along(dfs)) {
   WMids_age_bands_WMids <- left_join(WMids_age_bands_in, WMids_age_bands_out, by = "PUA")
   YH_age_bands_YH <- left_join(YH_age_bands_in, YH_age_bands_out, by = "PUA")
   Wales_age_bands_Wales <- left_join(Wales_age_bands_in, Wales_age_bands_out, by = "PUA")
+  UrbanGSE_age_bands_UrbanGSE <- left_join(UrbanGSE_age_bands_in, UrbanGSE_age_bands_out, by = "PUA")
+  Non_UrbanGSE_age_bands_Non_UrbanGSE <- left_join(Non_UrbanGSE_age_bands_in, Non_UrbanGSE_age_bands_out, by = "PUA")
   
   # creating Net columns
   age_bands_inout$Net0_5 <- age_bands_inout$"0_5_in" - age_bands_inout$"0_5_out"
@@ -584,6 +656,22 @@ for (i in seq_along(dfs)) {
   Wales_age_bands_Wales$Net56_65 <- Wales_age_bands_Wales$"Wales_56_65_in" - Wales_age_bands_Wales$"Wales_56_65_out"
   Wales_age_bands_Wales$total <- Wales_age_bands_Wales$Wales_allages_in - Wales_age_bands_Wales$Wales_allages_out
   
+  UrbanGSE_age_bands_UrbanGSE$Net0_5 <- UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_0_5_in" - UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_0_5_out"
+  UrbanGSE_age_bands_UrbanGSE$Net18_19 <- UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_18_19_in" - UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_18_19_out"
+  UrbanGSE_age_bands_UrbanGSE$Net22_25 <- UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_22_25_in" - UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_22_25_out"
+  UrbanGSE_age_bands_UrbanGSE$Net30_35 <- UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_30_35_in" - UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_30_35_out"
+  UrbanGSE_age_bands_UrbanGSE$Net36_45 <- UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_36_45_in" - UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_36_45_out"
+  UrbanGSE_age_bands_UrbanGSE$Net56_65 <- UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_56_65_in" - UrbanGSE_age_bands_UrbanGSE$"UrbanGSE_56_65_out"
+  UrbanGSE_age_bands_UrbanGSE$total <- UrbanGSE_age_bands_UrbanGSE$UrbanGSE_allages_in - UrbanGSE_age_bands_UrbanGSE$UrbanGSE_allages_out
+  
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$Net0_5 <- Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_0_5_in" - Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_0_5_out"
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$Net18_19 <- Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_18_19_in" - Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_18_19_out"
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$Net22_25 <- Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_22_25_in" - Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_22_25_out"
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$Net30_35 <- Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_30_35_in" - Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_30_35_out"
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$Net36_45 <- Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_36_45_in" - Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_36_45_out"
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$Net56_65 <- Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_56_65_in" - Non_UrbanGSE_age_bands_Non_UrbanGSE$"Non_UrbanGSE_56_65_out"
+  Non_UrbanGSE_age_bands_Non_UrbanGSE$total <- Non_UrbanGSE_age_bands_Non_UrbanGSE$Non_UrbanGSE_allages_in - Non_UrbanGSE_age_bands_Non_UrbanGSE$Non_UrbanGSE_allages_out
+  
   # Convert tibble to data frame to make averaging later better
   age_bands_inout <- as.data.frame(age_bands_inout)
   Inner_age_bands_inout <- as.data.frame(Inner_age_bands_inout)
@@ -598,6 +686,9 @@ for (i in seq_along(dfs)) {
   East_age_bands_East <- as.data.frame(East_age_bands_East)
   YH_age_bands_YH <- as.data.frame(YH_age_bands_YH)
   Wales_age_bands_Wales <- as.data.frame(Wales_age_bands_Wales)
+  UrbanGSE_age_bands_UrbanGSE <- as.data.frame(UrbanGSE_age_bands_UrbanGSE)
+  Non_UrbanGSE_age_bands_Non_UrbanGSE <- as.data.frame(Non_UrbanGSE_age_bands_Non_UrbanGSE)
+  
   # Set the first column as row names
   rownames(age_bands_inout) <- age_bands_inout[, 1]
   rownames(Inner_age_bands_inout) <- Inner_age_bands_inout[, 1]
@@ -612,6 +703,9 @@ for (i in seq_along(dfs)) {
   rownames(WMids_age_bands_WMids) <- WMids_age_bands_WMids[, 1]
   rownames(YH_age_bands_YH) <- YH_age_bands_YH[, 1]
   rownames(Wales_age_bands_Wales) <- Wales_age_bands_Wales[, 1]
+  rownames(UrbanGSE_age_bands_UrbanGSE) <- UrbanGSE_age_bands_UrbanGSE[, 1]
+  rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE) <- Non_UrbanGSE_age_bands_Non_UrbanGSE[, 1]
+  
   # Remove the first column after setting it as row names
   age_bands_inout <- age_bands_inout[, -1]
   Inner_age_bands_inout <- Inner_age_bands_inout[, -1]
@@ -627,13 +721,16 @@ for (i in seq_along(dfs)) {
   YH_age_bands_YH <- YH_age_bands_YH[, -1]
   Wales_age_bands_Wales <- Wales_age_bands_Wales[, -1]
   East_age_bands_East <- East_age_bands_East[, -1]
+  UrbanGSE_age_bands_UrbanGSE <- UrbanGSE_age_bands_UrbanGSE[, -1]
+  Non_UrbanGSE_age_bands_Non_UrbanGSE <- Non_UrbanGSE_age_bands_Non_UrbanGSE[, -1]
   
   # Append data_inlondon to the result list
   result_list[[i]] <- list(age_bands_inout = age_bands_inout, Inner_age_bands_inout = Inner_age_bands_inout,
                            outer_age_bands_inout = outer_age_bands_inout, inout_age_bands_inout = inout_age_bands_inout,
                            SE_age_bands_SE = SE_age_bands_SE, SW_age_bands_SW = SW_age_bands_SW, NE_age_bands_NE = NE_age_bands_NE, 
                            NW_age_bands_NW = NW_age_bands_NW, WMids_age_bands_WMids = WMids_age_bands_WMids, EMids_age_bands_EMids = EMids_age_bands_EMids,
-                           East_age_bands_East = East_age_bands_East, YH_age_bands_YH = YH_age_bands_YH, Wales_age_bands_Wales = Wales_age_bands_Wales)
+                           East_age_bands_East = East_age_bands_East, YH_age_bands_YH = YH_age_bands_YH, Wales_age_bands_Wales = Wales_age_bands_Wales,
+                           UrbanGSE_age_bands_UrbanGSE = UrbanGSE_age_bands_UrbanGSE, Non_UrbanGSE_age_bands_Non_UrbanGSE = Non_UrbanGSE_age_bands_Non_UrbanGSE)
 }
 
 # Loop through each element in the result_list
@@ -653,6 +750,8 @@ for (i in seq_along(result_list)) {
   East_age_bands_East <- result_list[[i]]$East_age_bands_East
   YH_age_bands_YH <- result_list[[i]]$YH_age_bands_YH
   Wales_age_bands_Wales <- result_list[[i]]$Wales_age_bands_Wales
+  UrbanGSE_age_bands_UrbanGSE <- result_list[[i]]$UrbanGSE_age_bands_UrbanGSE
+  Non_UrbanGSE_age_bands_Non_UrbanGSE <- result_list[[i]]$Non_UrbanGSE_age_bands_Non_UrbanGSE
 
   # Assign them to separate datasets with meaningful names
   assign(paste0("age_bands_inout_", 2014+i), age_bands_inout)
@@ -668,6 +767,8 @@ for (i in seq_along(result_list)) {
   assign(paste0("East_age_bands_East_", 2014+i), East_age_bands_East)
   assign(paste0("YH_age_bands_YH_", 2014+i), YH_age_bands_YH)
   assign(paste0("Wales_age_bands_Wales_", 2014+i), Wales_age_bands_Wales)
+  assign(paste0("UrbanGSE_age_bands_UrbanGSE_", 2014+i), UrbanGSE_age_bands_UrbanGSE)
+  assign(paste0("Non_UrbanGSE_age_bands_Non_UrbanGSE_", 2014+i), Non_UrbanGSE_age_bands_Non_UrbanGSE)
 }
 
 ### I HAVE INSERTED THE MAKE DATAFRAME NOT A TIBLLE THING, SO WE CAN DO THE AVERAGE, IN THE LOOP ABOVE. 
@@ -699,6 +800,10 @@ Wales_average_2015_2019 <- (as.matrix(Wales_age_bands_Wales_2015) + as.matrix(Wa
                             + as.matrix(Wales_age_bands_Wales_2019)) / 5
 East_average_2015_2019 <- (as.matrix(East_age_bands_East_2015) + as.matrix(East_age_bands_East_2016) + as.matrix(East_age_bands_East_2017) + as.matrix(East_age_bands_East_2018)
                             + as.matrix(East_age_bands_East_2019)) / 5
+UrbanGSE_average_2015_2019 <- (as.matrix(UrbanGSE_age_bands_UrbanGSE_2015) + as.matrix(UrbanGSE_age_bands_UrbanGSE_2016) + as.matrix(UrbanGSE_age_bands_UrbanGSE_2017) + as.matrix(UrbanGSE_age_bands_UrbanGSE_2018)
+                            + as.matrix(UrbanGSE_age_bands_UrbanGSE_2019)) / 5
+Non_UrbanGSE_average_2015_2019 <- (as.matrix(Non_UrbanGSE_age_bands_Non_UrbanGSE_2015) + as.matrix(Non_UrbanGSE_age_bands_Non_UrbanGSE_2016) + as.matrix(Non_UrbanGSE_age_bands_Non_UrbanGSE_2017) + as.matrix(Non_UrbanGSE_age_bands_Non_UrbanGSE_2018)
+                            + as.matrix(Non_UrbanGSE_age_bands_Non_UrbanGSE_2019)) / 5
 
 average_2015_2019 <- as.data.frame(average_2015_2019)
 Inner_average_2015_2019 <- as.data.frame(Inner_average_2015_2019)
@@ -713,6 +818,8 @@ EMids_average_2015_2019 <- as.data.frame(EMids_average_2015_2019)
 WMids_average_2015_2019 <- as.data.frame(WMids_average_2015_2019)
 Wales_average_2015_2019 <- as.data.frame(Wales_average_2015_2019)
 East_average_2015_2019 <- as.data.frame(East_average_2015_2019)
+UrbanGSE_average_2015_2019 <- as.data.frame(UrbanGSE_average_2015_2019)
+Non_UrbanGSE_average_2015_2019 <- as.data.frame(Non_UrbanGSE_average_2015_2019)
 
 #make row named PUAs the first column again - done only for exported dataframes (can do more!)
 age_bands_inout_2022$PUA <- rownames(age_bands_inout_2022)
@@ -946,6 +1053,38 @@ YH_average_2015_2019$PUA <- rownames(YH_average_2015_2019)
 YH_average_2015_2019 <- YH_average_2015_2019[, c("PUA", setdiff(names(YH_average_2015_2019), "PUA"))]
 rownames(YH_average_2015_2019) <- NULL
 
+UrbanGSE_age_bands_UrbanGSE_2022$PUA <- rownames(UrbanGSE_age_bands_UrbanGSE_2022)
+UrbanGSE_age_bands_UrbanGSE_2022 <- UrbanGSE_age_bands_UrbanGSE_2022[, c("PUA", setdiff(names(UrbanGSE_age_bands_UrbanGSE_2022), "PUA"))]
+rownames(UrbanGSE_age_bands_UrbanGSE_2022) <- NULL
+
+UrbanGSE_age_bands_UrbanGSE_2021$PUA <- rownames(UrbanGSE_age_bands_UrbanGSE_2021)
+UrbanGSE_age_bands_UrbanGSE_2021 <- UrbanGSE_age_bands_UrbanGSE_2021[, c("PUA", setdiff(names(UrbanGSE_age_bands_UrbanGSE_2021), "PUA"))]
+rownames(UrbanGSE_age_bands_UrbanGSE_2021) <- NULL
+
+UrbanGSE_age_bands_UrbanGSE_2020$PUA <- rownames(UrbanGSE_age_bands_UrbanGSE_2020)
+UrbanGSE_age_bands_UrbanGSE_2020 <- UrbanGSE_age_bands_UrbanGSE_2020[, c("PUA", setdiff(names(UrbanGSE_age_bands_UrbanGSE_2020), "PUA"))]
+rownames(UrbanGSE_age_bands_UrbanGSE_2020) <- NULL
+
+UrbanGSE_average_2015_2019$PUA <- rownames(UrbanGSE_average_2015_2019)
+UrbanGSE_average_2015_2019 <- UrbanGSE_average_2015_2019[, c("PUA", setdiff(names(UrbanGSE_average_2015_2019), "PUA"))]
+rownames(UrbanGSE_average_2015_2019) <- NULL
+
+Non_UrbanGSE_age_bands_Non_UrbanGSE_2022$PUA <- rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE_2022)
+Non_UrbanGSE_age_bands_Non_UrbanGSE_2022 <- Non_UrbanGSE_age_bands_Non_UrbanGSE_2022[, c("PUA", setdiff(names(Non_UrbanGSE_age_bands_Non_UrbanGSE_2022), "PUA"))]
+rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE_2022) <- NULL
+
+Non_UrbanGSE_age_bands_Non_UrbanGSE_2021$PUA <- rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE_2021)
+Non_UrbanGSE_age_bands_Non_UrbanGSE_2021 <- Non_UrbanGSE_age_bands_Non_UrbanGSE_2021[, c("PUA", setdiff(names(Non_UrbanGSE_age_bands_Non_UrbanGSE_2021), "PUA"))]
+rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE_2021) <- NULL
+
+Non_UrbanGSE_age_bands_Non_UrbanGSE_2020$PUA <- rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE_2020)
+Non_UrbanGSE_age_bands_Non_UrbanGSE_2020 <- Non_UrbanGSE_age_bands_Non_UrbanGSE_2020[, c("PUA", setdiff(names(Non_UrbanGSE_age_bands_Non_UrbanGSE_2020), "PUA"))]
+rownames(Non_UrbanGSE_age_bands_Non_UrbanGSE_2020) <- NULL
+
+Non_UrbanGSE_average_2015_2019$PUA <- rownames(Non_UrbanGSE_average_2015_2019)
+Non_UrbanGSE_average_2015_2019 <- Non_UrbanGSE_average_2015_2019[, c("PUA", setdiff(names(Non_UrbanGSE_average_2015_2019), "PUA"))]
+rownames(Non_UrbanGSE_average_2015_2019) <- NULL
+
 
 ### EXPORT age band stats to excel
 # Export data as an excel workbook with multiple sheets:
@@ -985,6 +1124,8 @@ df_list_geog <- list(average_2015_2019, age_bands_inout_2022, age_bands_inout_20
                      WMids_average_2015_2019, WMids_age_bands_WMids_2022, WMids_age_bands_WMids_2021, WMids_age_bands_WMids_2020,
                      EMids_average_2015_2019, EMids_age_bands_EMids_2022, EMids_age_bands_EMids_2021, EMids_age_bands_EMids_2020,
                      Wales_average_2015_2019, Wales_age_bands_Wales_2022, Wales_age_bands_Wales_2021, Wales_age_bands_Wales_2020,
+                     UrbanGSE_average_2015_2019, UrbanGSE_age_bands_UrbanGSE_2022, UrbanGSE_age_bands_UrbanGSE_2021, UrbanGSE_age_bands_UrbanGSE_2020,
+                     Non_UrbanGSE_average_2015_2019, Non_UrbanGSE_age_bands_Non_UrbanGSE_2022, Non_UrbanGSE_age_bands_Non_UrbanGSE_2021, Non_UrbanGSE_age_bands_Non_UrbanGSE_2020,
                      YH_average_2015_2019, YH_age_bands_YH_2022, YH_age_bands_YH_2021, YH_age_bands_YH_2020)
 names(df_list_geog) <- c("2015_2019", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015",
                          "Inner_2015_2019", "Inner_2022", "Inner_2021", "Inner_2020",
@@ -998,6 +1139,8 @@ names(df_list_geog) <- c("2015_2019", "2022", "2021", "2020", "2019", "2018", "2
                          "WMids_2015_2019", "WMids_2022", "WMids_2021", "WMids_2020",
                          "EMids_2015_2019", "EMids_2022", "EMids_2021", "EMids_2020",
                          "Wales_2015_2019", "Wales_2022", "Wales_2021", "Wales_2020",
+                         "UrbanGSE_2015_2019", "UrbanGSE_2022", "UrbanGSE_2021", "UrbanGSE_2020",
+                         "Non_UrbanGSE_2015_2019", "Non_UrbanGSE_2022", "Non_UrbanGSE_2021", "Non_UrbanGSE_2020",
                          "YH_2015_2019", "YH_2022", "YH_2021", "YH_2020")                         
 
 # Export data frames to Excel

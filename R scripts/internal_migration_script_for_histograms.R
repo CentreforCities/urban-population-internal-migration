@@ -319,10 +319,14 @@ dir_path_geog = paste0(dirname("~"),"/Centre for Cities/Centre For Cities POC - 
 file_path_geog <- file.path(dir_path_geog, file_name_geog)
 
 # Create a list of data frames
-df_list_geog <- list(average15_19_netLondon, Net_london_2021,Net_InnerLDN_to_outsideLDN2021,Net_OuterLDN_to_outsideLDN2021, average15_19_netOuterLondon,
-                     average15_19_netInnerLondon,average15_19_inInOutLondon, average15_19_outInOutLondon, data_inInOutlondon_2021,data_outInOutlondon_2021)
-names(df_list_geog) <- c("pre_covid_net", "2021_net","2021_Inner_net", "2021_Outer_net","pre_covid_outer_net","pre_covid_inner_net",
-                         "pre_covid_inout_in","pre_covid_inout_out", "2021_inout_in", "2021_inout_out")                         
+df_list_geog <- list(average15_19_netLondon, Net_london_2022, Net_london_2021, Net_london_2020, Net_InnerLDN_to_outsideLDN2022,Net_OuterLDN_to_outsideLDN2022, Net_InnerLDN_to_outsideLDN2021,Net_OuterLDN_to_outsideLDN2021,
+                     Net_InnerLDN_to_outsideLDN2020,Net_OuterLDN_to_outsideLDN2020, average15_19_netOuterLondon, average15_19_netInnerLondon,
+                     average15_19_inInOutLondon, average15_19_outInOutLondon, data_inInOutlondon_2022,data_outInOutlondon_2022, data_inInOutlondon_2021,data_outInOutlondon_2021,
+                     data_inInOutlondon_2020,data_outInOutlondon_2020)
+names(df_list_geog) <- c("pre_covid_net",  "2022_net", "2021_net","2020_net","2022_Inner_net", "2022_Outer_net","2021_Inner_net", "2021_Outer_net",
+                         "2020_Inner_net", "2020_Outer_net","pre_covid_outer_net","pre_covid_inner_net",
+                         "pre_covid_inout_in","pre_covid_inout_out", "2022_inout_in", "2022_inout_out","2021_inout_in", "2021_inout_out",
+                         "2020_inout_in", "2020_inout_out")                         
 
 # Export data frames to Excel
 export_to_excel(df_list_geog, file_path_geog)

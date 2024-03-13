@@ -50,7 +50,7 @@ colnames(geography)[2] <- "outla"
 selected_LA <- c("Kensington and Chelsea", "Westminster", "Hammersmith and Fulham", "Camden", "Richmond upon Thames", "Islington", "Southwark", "Lambeth",
                  "Greenwich", "Tower Hamlets", "Hackney", "Newham", "City of London", "Wandsworth", "Lewisham", "Haringey", "Croydon", "Hounslow",
                  "Watford", "Epping Forest", "Wiltshire", "Cornwall", "Bristol, City of", "Brighton and Hove", "Lewes", "Thanet",
-                 "Oxford", "South Oxfordshire", "Seven Oaks", "Winchester", "Barking and Dagenham",
+                 "Oxford", "South Oxfordshire", "Seven Oaks", "Winchester", "Barking and Dagenham" = "BND_nonLDF_move",
                  "Barnet" ,       "Bexley" ,   "Brent" ,     "Bromley" ,   "Ealing",   "Enfield" ,   "Harrow" ,   "Havering" ,"Hillingdon" ,
                  "Kingston upon Thames" , "Merton" , "Redbridge" , "Sutton" , "Waltham Forest" ,"Dartford" , "Gravesham","Elmbridge" ,"Epsom and Ewell" ,
                  "Runnymede" ,"Spelthorne" ,   "Woking" ,    "Broxbourne" ,  "Hertsmere" ,"Three Rivers")
@@ -145,7 +145,6 @@ for (i in seq_along(dfs)) {
   }
   
   ##understanding moves between London and SE Local authorities (Selected Bristol)
-  #create column labelling moves between Hounslow and non-London LAs 
   raw_geog_inout <- raw_geog_inout %>%
     mutate(Winchester_LDN_move = ifelse(inla == "Winchester" & outPUA == "London", "Winchester",
                                      ifelse(inPUA == "London" & outLA == "Winchester", "Winchester", "ignore")))
@@ -174,6 +173,20 @@ for (i in seq_along(dfs)) {
     mutate(SouthOxfordshire_LDN_move = ifelse(inla == "South Oxfordshire" & outPUA == "London", "South Oxfordshire",
                                     ifelse(inPUA == "London" & outLA == "South Oxfordshire", "South Oxfordshire", "ignore")))
   
+  raw_geog_inout <- raw_geog_inout %>%
+    mutate(Cornwall_LDN_move = ifelse(inla == "Cornwall" & outPUA == "London", "Cornwall",
+                                   ifelse(inPUA == "London" & outLA == "Cornwall", "Cornwall", "ignore")))
+  
+  raw_geog_inout <- raw_geog_inout %>%
+    mutate(Wiltshire_LDN_move = ifelse(inla == "Wiltshire" & outPUA == "London", "Wiltshire",
+                                   ifelse(inPUA == "London" & outLA == "Wiltshire", "Wiltshire", "ignore")))
+  
+  raw_geog_inout <- raw_geog_inout %>%
+    mutate(Bristol_LDN_move = ifelse(inla == "Bristol, City of" & outPUA == "London", "Bristol, City of",
+                                   ifelse(inPUA == "London" & outLA == "Bristol, City of", "Bristol, City of", "ignore")))
+  
+  
+
   
   #add age band categories
   raw_geog_inout$Band_0_5 <- raw_geog_inout$Age_0 + raw_geog_inout$Age_1 + raw_geog_inout$Age_2 + raw_geog_inout$Age_3 + raw_geog_inout$Age_4 + raw_geog_inout$Age_5
