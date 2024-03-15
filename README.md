@@ -43,7 +43,7 @@ Data on private rents is from the Price Index of Private Rents link above, but w
 Data on births and deaths are workbooks compiling separate ONS downloads. There are additional tabs which summarise this data for use in our year-by-year analysis. In these sheets, there is some manual inserting of local authority ONS codes from later geographies and summing of data to fit those geographies. This is to account for when geographies change between years, and data pulls from years either side of the boundary/code change. 
 
 ### Output workbooks
-The 'Output workbooks' folder contains workbooks used for our final analysis. Most of the data contained in these spreadsheets are outputs from R scripts. 
+The 'Output workbooks' folder contains workbooks used for our final analysis. Most of the data contained in these spreadsheets are outputs from R scripts. Analysis on these outputted data is completed in the leftmost tabs for each workbook. 
 
 'internal migration statistics' is the output from the 'internal migration script for stats' R script. Additional analysis is conducted to summarise migration patterns between London (Inner and Outer) and the rest of England and Wales; migration between Inner and Outer London; migration between London and different regions in England & Wales.  
 
