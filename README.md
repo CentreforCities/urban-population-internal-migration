@@ -1,5 +1,5 @@
 # urban-population-internal-migration
-Data handling and analysis for the Centre for Cities 'Escape to the country? How Covid changed London's population' briefing
+Data handling and analysis for the Centre for Cities 'Escape to the country? How Covid changed London's population' briefing. This briefing was released March 18th, 2024.
 
 ## Description
 This repo contains the scripts and workbooks used to analyse data for our March 2024 release 'Escape to the country? How Covid changed London's population'. This briefing looks at the impact of the Covid-19 pandemic on urban population growth in the UK, with a specific focus on London. 
