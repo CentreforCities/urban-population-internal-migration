@@ -55,7 +55,7 @@ The 'Output workbooks' folder contains workbooks used for our final analysis. Mo
 
 'average private rents data' is the output from the 'average private rents script' R script. 
 
-'international migration calculations' pastes data from the other scripts and includes calculations for international migration between 2015-2022. 
+'international migration calculations' pastes data from the other scripts and includes calculations for international migration between 2015-2022. Note that this uses slightly different internal migration totals to that used in the rest of the report, as it includes moves between Scotland and Northern Ireland and English and Welsh local authorities. The R scripts and other data for internal migration only look at movement between English and Welsh local authorities. 
 
 ## Understanding the Scripts
 There are currently six scripts in this folder. External (non-Centre for Cities) users of these scripts will need to:
